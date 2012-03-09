@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="keywords" content="jQuery Panel, jqxPanel. Overflow Panel, Container, Panel" /> 
+    <meta name="description" content="The jqxPanel widget represents a Panel widget. This widget is a container for other widgets or elements. It automatically 
+    adds horizontal and vertical scrollbars, if the content is not fully visible." />
+    <title id='Description'>The jqxPanel widget represents a Panel widget. This widget is a container for other widgets or elements. It automatically 
+    adds horizontal and vertical scrollbars, if the content is not fully visible.</title>
+    <link rel="stylesheet" href="jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script type="text/javascript" src="scripts/gettheme.js"></script>
+    <script type="text/javascript" src="scripts/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxpanel.js"></script>
+	<script type="text/javascript" src="jqwidgets/jqxexpander.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Create jqxPanel
+            var theme = getTheme();
+            
+					
+					$("#jqxExpander").jqxExpander({ width: '350px',theme: theme});
+	
+	$('#jqxExpander').jqxExpander('setHeaderContent', 'Header'); 
+	$('#jqxExpander').jqxExpander('setContent', 'Content'); 
+	
+
+	
+//$('#jqxWidget').jqxPanel('append',$('#jqxExpander'));
+
+        });
+    </script>
+	<style>
+	 #jqxWidget{
+	width:350px;
+	height:auto;
+	margin-left;auto;margin-right:auto;
+	border: medium groove #F00;
+}
+</style>
+	 
+</head>
+<body >
+    
+    
+</body>
+</html>

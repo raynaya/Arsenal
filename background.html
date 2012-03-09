@@ -1,0 +1,39 @@
+<html>
+<head>
+<script>
+var req = new XMLHttpRequest();
+req.open("GET","http://feeds.arsenal.com/arsenal-news",false);
+req.send();
+
+//localStorage.getItem("c",c);
+var c="Mon, 01 Aug 2011 15:21:54 +0000";
+
+function search(){
+
+
+var a= req.responseXML.getElementsByTagName("item");
+
+var b=a[0].childNodes[9].childNodes[0].nodeValue;
+
+if( b==c) { return;}
+else{
+c=b;
+chrome.browserAction.setBadgeText({text:"new"});
+
+//localStorage.setItem("c",c);
+}
+
+}
+chrome.browserAction.onClicked.addListener(function(tab) {
+alert( " good");
+    chrome.browserAction.setBadgeText({text:"1"});
+      
+  });
+</script>
+
+</head>
+
+<body onload=setInterval("search()",10000);>
+
+</body>
+</html>

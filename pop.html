@@ -1,0 +1,167 @@
+<html>
+<head>
+   <link rel="stylesheet" href="jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script type="text/javascript" src="scripts/gettheme.js"></script>
+    <script type="text/javascript" src="scripts/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Create jqxPanel
+            var theme = getTheme();
+            $("#jqxWidget").jqxPanel({ width:350, height:400, disabled:false , sizeMode: 'fixed', autoUpdate: true ,theme: theme });
+        });
+    </script>
+<style>
+
+ 
+   * { text-decoration:none;margin 0px; padding 0px;
+       }
+	   
+	   h3,h2,h4,h5 {
+	font-family: 'Nova Round', cursive;
+	font-weight: bold;
+	color:#F00;
+	font-size:20px;
+	text-decoration:underline;
+	   }
+	   
+	   img:hover{ cursor:pointer;}
+	   	
+		img{
+	padding: 3px;}
+
+	
+	
+	a { opacity:0.8; color:red; margin-left:10px;   } 
+	a:visited{ color:red }
+	
+	body{   margin-top:0px;	
+			text-decoration:none;
+			
+			}
+	
+	p{ font-size:12px;text-align:left;margin-left:10px; margin-top:0px;}
+
+	a:hover{ text-decoration:underline;
+	          opacity:1.5;
+			  }
+		#jqxWidget{
+	width:350px;
+	height:auto;
+	margin-left;auto;margin-right:auto;
+	border: medium groove #F00;
+	
+}
+.block{
+border: thin #F00;
+border-top-style:solid;
+min-width:340;
+padding:2px 0px 2px 0px;
+}
+p {
+display : none;
+margin-left:7px;
+padding-top:4px;
+}
+img.pm { margin-right:3px;cursor:pointer; margin-top:0px; }
+
+</style>
+<script>
+var req = new XMLHttpRequest();
+
+req.open("GET","http://feeds.arsenal.com/arsenal-news",false);
+
+//{document.write("<h4 style=\" text-align:center; text-decoration:none;\">Check your internet</h4> "); document.body.display=none;}
+//req.open("GET","file:///C:/Documents%20and%20Settings/shamik/Desktop/arse",false);
+
+req.send();
+
+//alert("boo"+ req.responseXML.getElementsByTagName("link").[0].value);
+
+function show(){
+
+//alert("boo");
+ var a = req.responseXML.getElementsByTagName("item");
+ 
+    for(var i=0;(i<a.length)&&(i<20);i++){
+	
+	/*var x=document.createElement("img");
+	x.src="pm.gif";
+	x.class="pm";*/
+	var z=new Array();
+	
+	  z[i]=document.createElement("a");
+	 
+    z[i].href=a[i].childNodes[3].childNodes[0].nodeValue;
+	//z[i].target="_blank";
+	//alert(z[i].href);
+	
+	var adiv=document.createElement("div");
+	$(adiv).addClass("block");
+	
+	
+	z[i].innerHTML=a[i].childNodes[1].childNodes[0].nodeValue;
+	//alert(z.href);
+	//a.innerHTML=a[0].childNodes[1].childNodes[0].nodeValue;
+	//document.getElementById("wrapper").appendChild(x);
+	//document.getElementById("wrapper").appendChild(z[i]);
+
+	//document.body.childNodes[1].appendChild(x);
+	//document.body.childNodes[1].appendChild(z[i]);
+	//$('#jqxWidget').jqxPanel('append',adiv);
+	//$('#jqxWidget').jqxPanel('append',x);
+		//$('#jqxWidget').jqxPanel('append',z[i]);
+		adiv.appendChild(z[i]);
+		
+	var y=document.createElement("p");
+	
+	
+
+	y.innerHTML=a[i].childNodes[7].childNodes[0].nodeValue;
+	//alert(y.innerHTML)
+	
+//	$('#jqxWidget').jqxPanel('append',y);
+	//$('#jqxWidget').jqxPanel('append',document.createElement("br"));
+adiv.appendChild(y);
+$('#jqxWidget').jqxPanel('append',adiv);
+
+
+	
+	}
+	/*$("a").hover(
+  function () {
+    $(this).next("p"). show(700);
+	// css('display', 'block');
+  }, 
+  function () {
+    $(this).next("p").hide(2000);
+  }
+);*/
+$("a").click(
+  function () {
+  $(this).next("p").slideToggle();
+  }
+);
+$("a").dblclick(function() {
+  chrome.tabs.create( {url:$(this).attr("href")} )
+//alert($(this).attr("href"));
+});
+
+}
+
+</script>
+</head>
+<body  onload="show()">
+ <div id="jqxWidget" style="font-size: 13px; font-family: Verdana; float: left;">
+ <img  onclick=chrome.tabs.create({url:"http://arsenal.com"}); src="arsenalheader.png" width="340" height="90" align="left"   style=" position">
+    
+
+
+</div>
+            
+
+</body>
+</html>

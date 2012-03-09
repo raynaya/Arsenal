@@ -1,0 +1,12 @@
+{
+  "name": "FEED ARSENAL",
+    "version": "1.0",
+  "description": "Shows you news feed from Arsenal.com",
+    "browser_action": {
+  "default_icon":"icon.jpg",
+    "popup": "pop.html"
+  },
+  "permissions": [
+    "http://*/","tabs"
+  ]
+}
